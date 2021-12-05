@@ -6,7 +6,7 @@
 /*   By: igomez-p <ire.go.pla@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/05 13:44:00 by igomez-p          #+#    #+#             */
-/*   Updated: 2021/12/05 14:02:48 by igomez-p         ###   ########.fr       */
+/*   Updated: 2021/12/05 14:36:02 by igomez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	lowplotline(t_point p0, t_point p1, t_fdf *data)
 	}
 }
 
-void	highplotline(t_point p0, t_point p1, t_fdf *data)
+void	highplotline(t_point p0, t_point p1, t_fdf *data, int c)
 {
 	t_vbles	high;
 
@@ -67,7 +67,7 @@ void	highplotline(t_point p0, t_point p1, t_fdf *data)
 	high.x = p0.x;
 	while (p0.y < p1.y)
 	{
-		mine_mlx_pixel_put(data, high.x, p0.y);
+		my_mlx_pixel_put(data, high.x, p0.y, c);
 		if (high.d > 0)
 		{
 			high.x = high.x + high.xi;
