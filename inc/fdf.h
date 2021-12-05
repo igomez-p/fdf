@@ -6,7 +6,7 @@
 /*   By: igomez-p <ire.go.pla@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 18:51:44 by igomez-p          #+#    #+#             */
-/*   Updated: 2021/12/04 20:24:10 by igomez-p         ###   ########.fr       */
+/*   Updated: 2021/12/05 13:21:03 by igomez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,43 +107,29 @@ typedef struct s_cub {
 	int			nrows;
 	int			ncols;
 	char		*line;
-//	char		**map;
 	int			**map;
 	t_render	res;
 	t_minilix	libx;
 	t_img		win;
 	//t_draw		draw;
-	t_check		check;
-	t_read		r;
+	//t_check		check;
+	//t_read		r;
 }				t_cub;
 
-char			*info_map(char *line, char *stc, t_cub *cub);
 void			init_struct(t_cub *info);
 void			init_mlx_func(t_cub *c);
-void			read_cub(char *filename, t_cub *info);
 int				key_press_handler(int key, t_cub *c);
 int				key_release_handler(int key, t_cub *c);
 int				exit_handler(t_cub *c);
 void			clean_exit(t_cub *c, char *str, int error);
-int				paint_game(t_cub *c);
-void			step_initial_side(t_cub *c);
-int				move_keys(t_cub *c, double speed);
-int				rotate_keys(t_cub *c, double speed);
+//int				move_keys(t_cub *c, double speed);
+//int				rotate_keys(t_cub *c, double speed);
 void			free_map(t_cub *c);
-//void			refill_map(t_cub *c);
 int				draw(t_cub *c);
 void			my_mlx_pixel_put(t_cub *c, int x, int y, int color);
 void			check_extension(char *filename);
-void			remove_spaces(t_cub *c, char **line);
-void			check_map_wall(t_cub *c);
-int				map_dimensions(t_cub *c);
-//void			ft_split(char **s, char z, t_cub *c);
 char			**ft_split(char const *s1, char c);
-//int				ft_isspace(char c);
-void			free_str_exit(t_cub *c, char *txt, char *str);
-//int				is_char_valid(char c);
-//int				empty_line(char *line);
-int				check_bad_end(t_cub *c);
+//void			free_str_exit(t_cub *c, char *txt, char *str);
 void			parse_map(char *filename, t_cub *map);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: igomez-p <ire.go.pla@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 18:52:45 by igomez-p          #+#    #+#             */
-/*   Updated: 2021/12/05 13:07:45 by igomez-p         ###   ########.fr       */
+/*   Updated: 2021/12/05 13:35:53 by igomez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,10 @@ int	main(int argc, char *argv[])
 	t_cub	cub;
 
 	init_struct(&cub);
-	cub.res.x = 700;
-	cub.res.y = 600;
 	check_argc(&cub, argc);
 	check_extension(argv[1]);
-	//read_cub(argv[1], &cub);
 	parse_map(argv[1], &cub);
-	//refill_map(&cub);
-	printf("nrows %d\n", cub.nrows);
+	/*printf("nrows %d\n", cub.nrows);
 	for (int i = 0; i < cub.nrows; i++)
 	{
 		int k = 0;
@@ -47,13 +43,12 @@ int	main(int argc, char *argv[])
 			printf("%d ", cub.map[i][k++]);
 		printf("\n");
 	}
-	printf("ncol %d\n", cub.ncols);
-//	check_map_wall(&cub);
-/*	init_mlx_func(&cub);
+	printf("ncol %d\n", cub.ncols);*/
+	init_mlx_func(&cub);
 	mlx_hook(cub.libx.window, 2, 1, key_press_handler, &cub);
 	mlx_hook(cub.libx.window, 3, 2, key_release_handler, &cub);
 	mlx_hook(cub.libx.window, 17, (1U << 17), exit_handler, &cub);
 	//mlx_loop_hook(cub.libx.mlx, draw, &cub);
-	mlx_loop(cub.libx.mlx);*/
+	mlx_loop(cub.libx.mlx);
 	return (0);
 }
