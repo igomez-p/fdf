@@ -6,7 +6,7 @@
 /*   By: igomez-p <ire.go.pla@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 18:51:44 by igomez-p          #+#    #+#             */
-/*   Updated: 2021/12/05 18:33:06 by igomez-p         ###   ########.fr       */
+/*   Updated: 2021/12/05 19:02:41 by igomez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,37 +31,18 @@
 # include <string.h>
 # include <math.h>
 # include "libft.h"
-# define MAX_NUM			50
-# define SPACE				' '
-# define EMPTY				'0'
-# define WALL				'1'
-# define OBJECT				'2'
-# define NORTH				'N'
-# define SOUTH				'S'
-# define WEST				'W'
-# define EAST				'E'
-# define NO					1
-# define SO					0
-# define EA					3
-# define WE					2
-# define MAX_TEXTURES		4
 # define MAX_LEN			10
-# define TOTAL_IDS			8
-# define TOTAL_INFO			9
 # define VIEW_ANGLE			32.5
 # define SQUARES_SEC		0.09
 # define RADIANS_SEC		0.03
 # define AND_ING			8355711
 # define FRAME_TIME			1000.0
-# define BYTE				256
-# define BMP_HEADER_BYTES	54
-# define DATA_INIT			54
-# define BMP_HEADER_SIZE	40
-# define NUM_PLANES			1
-# define HORIZ_RESOLUTION	24
 # define WID_TAM			1600
 # define HEI_TAM			1500
 # define ZOOM				30
+# define ROT_X				1
+# define ROT_Y				2
+# define ROT_Z				3
 
 typedef struct s_render {
 	int			x;
