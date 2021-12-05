@@ -6,20 +6,33 @@
 /*   By: igomez-p <ire.go.pla@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 19:27:57 by igomez-p          #+#    #+#             */
-/*   Updated: 2021/12/05 14:10:57 by igomez-p         ###   ########.fr       */
+/*   Updated: 2021/12/05 14:22:28 by igomez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
 
-static void	init_cam(t_fdf *info)
+static void	init_aux(t_fdf *info)
 {
 	info->cam.pangle = 0.0;
+	info->cam.zoom = 0;
+	info->cam.x = 0;
+	info->cam.y = 0;
+	info->cam.angle = 0.0;
+	info->cam.isometric = 0;
+	info->cam.oblique = 0;
+	info->cam.plane = 0;
+	info->cam.rotate[0] = 0;
+	info->cam.rotate[1] = 0;
+	info->cam.rotate[2] = 0;
+	info->r.max = 0;
+	info->r.min = 0;
+	info->r.range = 0;
 }
 
 void	init_struct(t_fdf *info)
 {
-	init_cam(info);
+	init_aux(info);
 	info->res.x = WID_TAM;
 	info->res.y = HEI_TAM;
 	info->line = NULL;
@@ -35,7 +48,6 @@ void	init_struct(t_fdf *info)
 	info->win.hei = 0;
 	info->ncols = 0;
 	info->nrows = 0;
-
 }
 
 static void	resize_window(t_fdf *c)
