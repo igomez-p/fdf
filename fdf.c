@@ -6,7 +6,7 @@
 /*   By: igomez-p <ire.go.pla@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 18:52:45 by igomez-p          #+#    #+#             */
-/*   Updated: 2021/12/05 13:44:47 by igomez-p         ###   ########.fr       */
+/*   Updated: 2021/12/05 14:42:30 by igomez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,13 @@ int	main(int argc, char *argv[])
 		printf("\n");
 	}
 	printf("ncol %d\n", cub.ncols);*/
+	init_cam(&cub);
 	init_mlx_func(&cub);
 	mlx_hook(cub.libx.window, 2, 1, key_press_handler, &cub);
 	mlx_hook(cub.libx.window, 3, 2, key_release_handler, &cub);
 	mlx_hook(cub.libx.window, 17, (1U << 17), exit_handler, &cub);
-	//mlx_loop_hook(cub.libx.mlx, draw, &cub);
+	//display_img(&cub);
+	mlx_loop_hook(cub.libx.mlx, display_img, &cub);
 	mlx_loop(cub.libx.mlx);
 	return (0);
 }

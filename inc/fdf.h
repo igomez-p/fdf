@@ -6,7 +6,7 @@
 /*   By: igomez-p <ire.go.pla@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 18:51:44 by igomez-p          #+#    #+#             */
-/*   Updated: 2021/12/05 14:15:39 by igomez-p         ###   ########.fr       */
+/*   Updated: 2021/12/05 14:42:55 by igomez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,5 +167,10 @@ void			check_extension(char *filename);
 char			**ft_split(char const *s1, char c);
 //void			free_str_exit(t_fdf *c, char *txt, char *str);
 void			parse_map(char *filename, t_fdf *map);
+void			plotline(t_point p0, int x1, int y1, t_fdf *data, int c);
+void			perform_zoom(t_point *p0, t_point *p1, int z[2], t_fdf *data);
+void			perform_position(t_point *p0, t_point *p1, t_fdf *data);
+void			init_cam(t_fdf *data);
+int				display_img(t_fdf *d);
 
 #endif

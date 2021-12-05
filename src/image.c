@@ -6,16 +6,11 @@
 /*   By: igomez-p <ire.go.pla@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/24 14:31:02 by igomez-p          #+#    #+#             */
-/*   Updated: 2021/12/05 14:36:35 by igomez-p         ###   ########.fr       */
+/*   Updated: 2021/12/05 14:43:38 by igomez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
-
-/*static int	rgb2int(int r, int g, int b)
-{
-	return ((r << 16) | (g << 8) | b);
-}*/
 
 void	my_mlx_pixel_put(t_fdf *c, int x, int y, int color)
 {
@@ -44,17 +39,7 @@ int	set_color(int x, int y, t_fdf *data)
 	return (0);
 }
 
-/*void	mine_mlx_pixel_put(t_fdf *d, int x, int y)
-{
-	char	*dst;
-
-	if (x >= WID_TAM || x < 0 || y >= HEI_TAM || y < 0)
-		return ;
-	dst = d->win.addr + (y * d->win.sz + x * (d->win.bpp / 8));
-	*(unsigned int *)dst = d->mlx.color;
-}*/
-
-void	display_img(t_fdf *d)
+int		display_img(t_fdf *d)
 {
 	t_point	p;
 	int		color;
@@ -75,4 +60,5 @@ void	display_img(t_fdf *d)
 		p.y++;
 	}
 	mlx_put_image_to_window(d->libx.mlx, d->libx.window, d->win.img, 0, 0);
+	return (1);
 }
