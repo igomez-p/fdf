@@ -6,7 +6,7 @@
 /*   By: igomez-p <ire.go.pla@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 18:25:18 by igomez-p          #+#    #+#             */
-/*   Updated: 2021/12/05 13:10:07 by igomez-p         ###   ########.fr       */
+/*   Updated: 2021/12/05 13:44:47 by igomez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static int	double_free(char **array)
 	return (0);
 }
 
-static void	get_wh(char *filename, t_cub *info)
+static void	get_wh(char *filename, t_fdf *info)
 {
 	int		fd;
 	char	**buffer;
@@ -76,7 +76,7 @@ static void	fill(char *line, int *map_line)
 	free(buffer);
 }
 
-void	parse_map(char *filename, t_cub *map)
+void	parse_map(char *filename, t_fdf *map)
 {
 	int		i;
 	int		fd;

@@ -6,13 +6,13 @@
 /*   By: igomez-p <ire.go.pla@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 18:52:45 by igomez-p          #+#    #+#             */
-/*   Updated: 2021/12/05 13:35:53 by igomez-p         ###   ########.fr       */
+/*   Updated: 2021/12/05 13:44:47 by igomez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/fdf.h"
 
-static void	check_argc(t_cub *cub, int n)
+static void	check_argc(t_fdf *cub, int n)
 {
 	if (n < 2 || n > 3)
 		clean_exit(cub, "Invalid number of arguments\n", 1);
@@ -29,7 +29,7 @@ void	check_extension(char *filename)
 
 int	main(int argc, char *argv[])
 {
-	t_cub	cub;
+	t_fdf	cub;
 
 	init_struct(&cub);
 	check_argc(&cub, argc);

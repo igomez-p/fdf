@@ -6,7 +6,7 @@
 /*   By: igomez-p <ire.go.pla@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 18:51:44 by igomez-p          #+#    #+#             */
-/*   Updated: 2021/12/05 13:21:03 by igomez-p         ###   ########.fr       */
+/*   Updated: 2021/12/05 14:00:43 by igomez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,25 @@ typedef struct s_read {
 	int			*sizes;
 }				t_read;
 
+typedef struct s_cam {
+	double		pangle;
+}				t_cam;
+
+typedef struct s_point {
+	int			x;
+	int			y;
+}				t_point;
+
+typedef struct s_vbles {
+	int			x;
+	int			y;
+	int			d;
+	int			dy;
+	int			dx;
+	int			xi;
+	int			yi;
+}				t_vbles;
+
 typedef struct s_cub {
 	int			nrows;
 	int			ncols;
@@ -111,25 +130,26 @@ typedef struct s_cub {
 	t_render	res;
 	t_minilix	libx;
 	t_img		win;
+	t_cam		cam;
 	//t_draw		draw;
 	//t_check		check;
 	//t_read		r;
-}				t_cub;
+}				t_fdf;
 
-void			init_struct(t_cub *info);
-void			init_mlx_func(t_cub *c);
-int				key_press_handler(int key, t_cub *c);
-int				key_release_handler(int key, t_cub *c);
-int				exit_handler(t_cub *c);
-void			clean_exit(t_cub *c, char *str, int error);
-//int				move_keys(t_cub *c, double speed);
-//int				rotate_keys(t_cub *c, double speed);
-void			free_map(t_cub *c);
-int				draw(t_cub *c);
-void			my_mlx_pixel_put(t_cub *c, int x, int y, int color);
+void			init_struct(t_fdf *info);
+void			init_mlx_func(t_fdf *c);
+int				key_press_handler(int key, t_fdf *c);
+int				key_release_handler(int key, t_fdf *c);
+int				exit_handler(t_fdf *c);
+void			clean_exit(t_fdf *c, char *str, int error);
+//int				move_keys(t_fdf *c, double speed);
+//int				rotate_keys(t_fdf *c, double speed);
+void			free_map(t_fdf *c);
+int				draw(t_fdf *c);
+void			my_mlx_pixel_put(t_fdf *c, int x, int y, int color);
 void			check_extension(char *filename);
 char			**ft_split(char const *s1, char c);
-//void			free_str_exit(t_cub *c, char *txt, char *str);
-void			parse_map(char *filename, t_cub *map);
+//void			free_str_exit(t_fdf *c, char *txt, char *str);
+void			parse_map(char *filename, t_fdf *map);
 
 #endif

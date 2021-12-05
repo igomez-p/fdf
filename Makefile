@@ -6,7 +6,7 @@
 #    By: igomez-p <ire.go.pla@gmail.com>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/06 15:29:03 by igomez-p          #+#    #+#              #
-#    Updated: 2021/12/05 12:56:07 by igomez-p         ###   ########.fr        #
+#    Updated: 2021/12/05 13:40:44 by igomez-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,6 @@ NAME = fdf
 
 SRC = fdf.c				\
 	  src/init.c		\
-	  src/init_mlx.c	\
 	  src/read_map.c	\
 	  src/handler.c		\
 	  src/window.c		\
