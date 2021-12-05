@@ -6,7 +6,7 @@
 /*   By: igomez-p <ire.go.pla@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 18:51:44 by igomez-p          #+#    #+#             */
-/*   Updated: 2021/12/05 14:11:54 by igomez-p         ###   ########.fr       */
+/*   Updated: 2021/12/05 14:15:39 by igomez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,12 @@ typedef struct s_cam {
 	int			rotate[3];
 }				t_cam;
 
+typedef struct s_range {
+	int			max;
+	int			min;
+	int			range;
+}				t_range;
+
 typedef struct s_point {
 	int			x;
 	int			y;
@@ -140,6 +146,7 @@ typedef struct s_cub {
 	t_minilix	libx;
 	t_img		win;
 	t_cam		cam;
+	t_range		r;
 	//t_draw		draw;
 	//t_check		check;
 	//t_read		r;

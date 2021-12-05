@@ -6,7 +6,7 @@
 /*   By: igomez-p <ire.go.pla@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/05 14:06:45 by igomez-p          #+#    #+#             */
-/*   Updated: 2021/12/05 14:12:14 by igomez-p         ###   ########.fr       */
+/*   Updated: 2021/12/05 14:16:42 by igomez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,33 @@ int	zoom(int size)
 		return (2);
 }
 
+void	range(t_fdf *data)
+{
+	int		x;
+	int		y;
+
+	y = 0;
+	data->r.max = __INT_MAX__ * -1;
+	data->r.min = __INT_MAX__;
+	while (y < data->nrows)
+	{
+		x = 0;
+		while (x < data->ncols)
+		{
+			if (data->map[y][x] < data->r.min)
+				data->r.min = data->map[y][x];
+			if (data->map[y][x] > data->r.max)
+				data->r.max = data->map[y][x];
+			x++;
+		}
+		y++;
+	}
+	data->r.range = abs(data->r.max - data->r.min);
+}
+
 void	init_cam(t_fdf *data)
 {
-	data->map.range = range(data);
+	range(data);
 	data->cam.angle = 0.1;
 	data->cam.pangle = 0.53;
 	data->cam.isometric = 1;
