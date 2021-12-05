@@ -6,7 +6,7 @@
 /*   By: igomez-p <ire.go.pla@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 18:51:44 by igomez-p          #+#    #+#             */
-/*   Updated: 2021/12/05 14:00:43 by igomez-p         ###   ########.fr       */
+/*   Updated: 2021/12/05 14:11:54 by igomez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,9 @@
 # define BMP_HEADER_SIZE	40
 # define NUM_PLANES			1
 # define HORIZ_RESOLUTION	24
-# define WID_TAM			600
-# define HEI_TAM			700
+# define WID_TAM			1600
+# define HEI_TAM			1500
+# define ZOOM				30
 
 typedef struct s_render {
 	int			x;
@@ -90,21 +91,29 @@ typedef struct s_img {
 	int			repaint;
 }				t_draw;*/
 
-typedef struct s_check {
+/*typedef struct s_check {
 	int			res;
 	int			map;
-}				t_check;
+}				t_check;*/
 
-typedef struct s_read {
+/*typedef struct s_read {
 	char		*b;
 	char		*l;
-	//char		*stc;
+	char		*stc;
 	int			*stc;
 	int			*sizes;
-}				t_read;
+}				t_read;*/
 
 typedef struct s_cam {
 	double		pangle;
+	int			zoom;
+	int			x;
+	int			y;
+	double		angle;
+	int			isometric;
+	int			oblique;
+	int			plane;
+	int			rotate[3];
 }				t_cam;
 
 typedef struct s_point {

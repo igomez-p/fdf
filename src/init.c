@@ -6,27 +6,24 @@
 /*   By: igomez-p <ire.go.pla@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 19:27:57 by igomez-p          #+#    #+#             */
-/*   Updated: 2021/12/05 13:44:47 by igomez-p         ###   ########.fr       */
+/*   Updated: 2021/12/05 14:10:57 by igomez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
 
-static void	init_file_vble(t_fdf *info)
+static void	init_cam(t_fdf *info)
 {
-	info->res.x = WID_TAM;
-	info->res.y = HEI_TAM;
-	info->line = NULL;
-	info->map = NULL;
-	/*info->r.b = NULL;
-	info->r.l = NULL;
-	info->r.stc = NULL;
-	info->r.sizes = NULL;*/
+	info->cam.pangle = 0.0;
 }
 
 void	init_struct(t_fdf *info)
 {
-	init_file_vble(info);
+	init_cam(info);
+	info->res.x = WID_TAM;
+	info->res.y = HEI_TAM;
+	info->line = NULL;
+	info->map = NULL;
 	info->libx.mlx = NULL;
 	info->libx.window = NULL;
 	info->win.img = NULL;
@@ -38,7 +35,7 @@ void	init_struct(t_fdf *info)
 	info->win.hei = 0;
 	info->ncols = 0;
 	info->nrows = 0;
-	//info->check.map = 0;
+
 }
 
 static void	resize_window(t_fdf *c)
