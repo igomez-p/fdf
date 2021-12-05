@@ -6,21 +6,11 @@
 /*   By: igomez-p <ire.go.pla@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 18:25:18 by igomez-p          #+#    #+#             */
-/*   Updated: 2021/12/04 20:24:18 by igomez-p         ###   ########.fr       */
+/*   Updated: 2021/12/05 13:10:07 by igomez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
-
-static int	open_map(char *filename, t_cub *info)
-{
-	int	fd;
-
-	fd = open(filename, O_RDONLY);
-	if (fd == -1)
-		clean_exit(info, "Fdf file could not be opened\n", 1);
-	return (fd);
-}
 
 static int	array_length(char **array)
 {
@@ -50,26 +40,25 @@ static int	double_free(char **array)
 	return (0);
 }
 
-static int	*get_wh(char *filename, t_cub *info)
+static void	get_wh(char *filename, t_cub *info)
 {
-	int		*wh;
 	int		fd;
 	char	**buffer;
 
-	wh = malloc(sizeof(int) * 2);
-	wh[1] = 0;
-	fd = open_map(filename, info);
+	info->nrows = 0;
+	fd = open(filename, O_RDONLY);
+	if (fd == -1)
+		clean_exit(info, "Fdf file could not be opened\n", 1);
 	while (get_next_line(fd, &info->line))
 	{
 		buffer = ft_split(info->line, ' ');
-		wh[0] = array_length(buffer);
-		wh[1]++;
+		info->ncols = array_length(buffer);
+		info->nrows++;
 		free(info->line);
 		double_free(buffer);
 	}
 	free(info->line);
 	close(fd);
-	return (wh);
 }
 
 static void	fill(char *line, int *map_line)
@@ -90,15 +79,13 @@ static void	fill(char *line, int *map_line)
 void	parse_map(char *filename, t_cub *map)
 {
 	int		i;
-	int		*wh;
 	int		fd;
 
 	i = 0;
-	wh = get_wh(filename, map);
-	map->ncols = wh[0];
-	map->nrows = wh[1];
-	free(wh);
-	fd = open_map(filename, map);
+	get_wh(filename, map);
+	fd = open(filename, O_RDONLY);
+	if (fd == -1)
+		clean_exit(map, "Fdf file could not be opened\n", 1);
 	map->map = (int **)malloc(sizeof(int *) * map->nrows);
 	while (i < map->nrows)
 	{
@@ -106,7 +93,7 @@ void	parse_map(char *filename, t_cub *map)
 		i++;
 	}
 	i = 0;
-	while ((get_next_line(fd, &map->line)) > 0)
+	while (get_next_line(fd, &map->line) > 0)
 	{
 		fill(map->line, map->map[i++]);
 		free(map->line);

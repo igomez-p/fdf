@@ -6,7 +6,7 @@
 #    By: igomez-p <ire.go.pla@gmail.com>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/06 15:29:03 by igomez-p          #+#    #+#              #
-#    Updated: 2021/12/04 20:03:16 by igomez-p         ###   ########.fr        #
+#    Updated: 2021/12/05 12:56:07 by igomez-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,6 @@ SRC = fdf.c				\
 	  src/read_map.c	\
 	  src/handler.c		\
 	  src/window.c		\
-	  src/check_elements.c \
 	  library/ft_split.c \
 	  library/get_next_line.c \
 	  library/mem_functions.c	\
