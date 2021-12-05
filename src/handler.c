@@ -6,7 +6,7 @@
 /*   By: igomez-p <ire.go.pla@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 18:19:02 by igomez-p          #+#    #+#             */
-/*   Updated: 2021/12/05 13:44:47 by igomez-p         ###   ########.fr       */
+/*   Updated: 2021/12/05 17:20:19 by igomez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,12 @@ void	clean_exit(t_fdf *c, char *str, int error)
 		write(1, str, len);
 	if (c != NULL)
 	{
-		free_map(c);
-		if (c->libx.window)
-			mlx_destroy_window(c->libx.mlx, c->libx.window);
 		if (c->win.img)
 			mlx_destroy_image(c->libx.mlx, c->win.img);
+		if (c->libx.window)
+			mlx_destroy_window(c->libx.mlx, c->libx.window);
+		free_map(c);
 	}
+	//system("leaks fdf");
 	exit(1);
 }

@@ -6,7 +6,7 @@
 /*   By: igomez-p <ire.go.pla@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 18:25:18 by igomez-p          #+#    #+#             */
-/*   Updated: 2021/12/05 13:44:47 by igomez-p         ###   ########.fr       */
+/*   Updated: 2021/12/05 17:52:06 by igomez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,11 @@ static int	double_free(char **array)
 	while (array[i])
 	{
 		free(array[i]);
+		array[i] = NULL;
 		i++;
 	}
 	free(array);
+	array = NULL;
 	return (0);
 }
 
@@ -49,15 +51,17 @@ static void	get_wh(char *filename, t_fdf *info)
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
 		clean_exit(info, "Fdf file could not be opened\n", 1);
-	while (get_next_line(fd, &info->line))
+	while (get_next_line(fd, &info->line, &info->read.b, &info->read.l))
 	{
 		buffer = ft_split(info->line, ' ');
 		info->ncols = array_length(buffer);
 		info->nrows++;
 		free(info->line);
+		info->line = NULL;
 		double_free(buffer);
 	}
 	free(info->line);
+	info->line = NULL;
 	close(fd);
 }
 
@@ -73,7 +77,7 @@ static void	fill(char *line, int *map_line)
 		map_line[i] = ft_atoi(buffer[i]);
 		i++;
 	}
-	free(buffer);
+	double_free(buffer);
 }
 
 void	parse_map(char *filename, t_fdf *map)
@@ -93,11 +97,16 @@ void	parse_map(char *filename, t_fdf *map)
 		i++;
 	}
 	i = 0;
-	while (get_next_line(fd, &map->line) > 0)
+	while (get_next_line(fd, &map->line, &map->read.b, &map->read.l) > 0)
 	{
 		fill(map->line, map->map[i++]);
 		free(map->line);
+		map->line = NULL;
 	}
 	close(fd);
-	free(map->line);
+	if (map->line)
+	{
+		free(map->line);
+		map->line = NULL;
+	}
 }

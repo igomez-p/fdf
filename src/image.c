@@ -6,7 +6,7 @@
 /*   By: igomez-p <ire.go.pla@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/24 14:31:02 by igomez-p          #+#    #+#             */
-/*   Updated: 2021/12/05 14:43:38 by igomez-p         ###   ########.fr       */
+/*   Updated: 2021/12/05 18:45:46 by igomez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,24 +25,23 @@ int	set_color(int x, int y, t_fdf *data)
 	z = data->map[y][x];
 	i = (float)data->r.range / 6;
 	if (z <= data->r.min + i)
-		return (0x0000ff);
+		return (0x00ffdc);
 	else if (z <= (data->r.min + 2 * i))
-		return (0xff00ff);
+		return (0xff6b38);
 	else if (z <= (data->r.min + 3 * i))
 		return (0xffffff);
 	else if (z <= (data->r.min + 4 * i))
-		return (0x00ff00);
+		return (0xe23030);
 	else if (z <= (data->r.min + 5 * i))
-		return (0xff0000);
+		return (0x0083ff);
 	else if (z <= (data->r.min + 6 * i))
-		return (0xffff00);
+		return (0xffec00);
 	return (0);
 }
 
-int		display_img(t_fdf *d)
+int	display_img(t_fdf *d)
 {
 	t_point	p;
-	int		color;
 
 	p.y = 0;
 	while (p.y < d->nrows)
@@ -50,15 +49,16 @@ int		display_img(t_fdf *d)
 		p.x = 0;
 		while (p.x < d->ncols)
 		{
-			color = set_color(p.x, p.y, d);
+			d->color = set_color(p.x, p.y, d);
 			if (p.x < d->ncols - 1)
-				plotline(p, p.x + 1, p.y, d, color);
+				plotline(p, p.x + 1, p.y, d);
 			if (p.y < d->nrows - 1)
-				plotline(p, p.x, p.y + 1, d, color);
+				plotline(p, p.x, p.y + 1, d);
 			p.x++;
 		}
 		p.y++;
 	}
+	printf("display");
 	mlx_put_image_to_window(d->libx.mlx, d->libx.window, d->win.img, 0, 0);
 	return (1);
 }

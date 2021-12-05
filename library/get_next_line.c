@@ -6,7 +6,7 @@
 /*   By: igomez-p <ire.go.pla@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/03 16:50:00 by igomez-p          #+#    #+#             */
-/*   Updated: 2021/12/04 20:49:25 by igomez-p         ###   ########.fr       */
+/*   Updated: 2021/12/05 17:30:12 by igomez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char	*ft_strjoin(char *s1, char const *s2)
 	s[p] = '\0';
 	return (s);
 }
-/*
+
 static char	*ft_temp(char *l)
 {
 	int		p;
@@ -116,112 +116,5 @@ int	get_next_line(int fd, char **line, char **b, char **l)
 	*line = ft_strdup(*l);
 	free(*l);
 	*l = NULL;
-	return (0);
-}
-*/
-
-char	*ft_temp(char *l)
-{
-	int		p;
-	int		k;
-	char	*temp;
-
-	p = 0;
-	while (l[p] && l[p] != '\n')
-		p++;
-	temp = (char *)malloc(sizeof(char) * (p + 1));
-	if (!temp)
-		return (NULL);
-	k = 0;
-	while (k != p)
-	{
-		temp[k] = l[k];
-		k++;
-	}
-	temp[k] = '\0';
-	return (temp);
-}
-
-char	*ft_newstatic(char *aux, char *l, char **line)
-{
-	*line = ft_temp(l);
-	l = NULL;
-	free(l);
-	l = ft_strdup(&aux[1]);
-	return (l);
-}
-
-/*char	*reader(int fd, char **line, char *aux, char *l, char *buffer)
-{
-	int		nbytes;
-	char	*temp;
-
-	buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	if (!buffer || fd <= 0 || BUFFER_SIZE <= 0 || !line)
-		return (-1);
-	nbytes = read(fd, buffer, BUFFER_SIZE);
-	while (nbytes > 0)
-	{
-		buffer[nbytes] = '\0';
-		temp = ft_strjoin(l, buffer);
-		free(l);
-		l = temp;
-		aux = ft_strchr(l, '\n');
-		if (aux != NULL)
-		{
-			free(buffer);
-			l = ft_newstatic(aux, l, line);
-			return (1);
-		}
-		nbytes = read(fd, buffer, BUFFER_SIZE);
-	}
-	if (nbytes < 0)
-		return (-1);
-	free(buffer);
-	return (l);
-}*/
-
-int	get_next_line(int fd, char **line)
-{
-	static char	*l;
-	char		*buffer;
-	size_t		nbytes;
-	char		*aux;
-	char		*temp;
-
-	if (!l)
-		l = ft_strdup("");
-	buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	if (!buffer || fd <= 0 || BUFFER_SIZE <= 0 || !line)
-		return (-1);
-	nbytes = read(fd, buffer, BUFFER_SIZE);
-	while (nbytes > 0)
-	{
-		buffer[nbytes] = '\0';
-		temp = ft_strjoin(l, buffer);
-		free(l);
-		l = temp;
-		aux = ft_strchr(l, '\n');
-		if (aux != NULL)
-		{
-			free(buffer);
-			l = ft_newstatic(aux, l, line);
-			return (1);
-		}
-		nbytes = read(fd, buffer, BUFFER_SIZE);
-	}
-	if (nbytes < 0)
-		return (-1);
-	aux = ft_strchr(l, '\n');
-	if (aux != NULL)
-	{
-		free(buffer);
-		l = ft_newstatic(aux, l, line);
-		return (1);
-	}
-	*line = ft_strdup(l);
-	l = NULL;
-	free(l);
-	free(buffer);
 	return (0);
 }

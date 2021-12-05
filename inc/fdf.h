@@ -6,7 +6,7 @@
 /*   By: igomez-p <ire.go.pla@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 18:51:44 by igomez-p          #+#    #+#             */
-/*   Updated: 2021/12/05 14:42:55 by igomez-p         ###   ########.fr       */
+/*   Updated: 2021/12/05 18:33:06 by igomez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,33 +83,17 @@ typedef struct s_img {
 	int			bpp;
 }				t_img;
 
-/*typedef struct s_draw {
-	int			start;
-	int			end;
-	double		wallx;
-	double		wally;
-	int			repaint;
-}				t_draw;*/
-
-/*typedef struct s_check {
-	int			res;
-	int			map;
-}				t_check;*/
-
-/*typedef struct s_read {
+typedef struct s_read {
 	char		*b;
 	char		*l;
-	char		*stc;
-	int			*stc;
-	int			*sizes;
-}				t_read;*/
+}				t_read;
 
 typedef struct s_cam {
-	double		pangle;
+	float		pangle;
 	int			zoom;
 	int			x;
 	int			y;
-	double		angle;
+	float		angle;
 	int			isometric;
 	int			oblique;
 	int			plane;
@@ -142,14 +126,13 @@ typedef struct s_cub {
 	int			ncols;
 	char		*line;
 	int			**map;
+	int			color;
 	t_render	res;
 	t_minilix	libx;
 	t_img		win;
 	t_cam		cam;
 	t_range		r;
-	//t_draw		draw;
-	//t_check		check;
-	//t_read		r;
+	t_read		read;
 }				t_fdf;
 
 void			init_struct(t_fdf *info);
@@ -158,16 +141,13 @@ int				key_press_handler(int key, t_fdf *c);
 int				key_release_handler(int key, t_fdf *c);
 int				exit_handler(t_fdf *c);
 void			clean_exit(t_fdf *c, char *str, int error);
-//int				move_keys(t_fdf *c, double speed);
-//int				rotate_keys(t_fdf *c, double speed);
 void			free_map(t_fdf *c);
-int				draw(t_fdf *c);
 void			my_mlx_pixel_put(t_fdf *c, int x, int y, int color);
 void			check_extension(char *filename);
 char			**ft_split(char const *s1, char c);
 //void			free_str_exit(t_fdf *c, char *txt, char *str);
 void			parse_map(char *filename, t_fdf *map);
-void			plotline(t_point p0, int x1, int y1, t_fdf *data, int c);
+void			plotline(t_point p0, int x1, int y1, t_fdf *data);
 void			perform_zoom(t_point *p0, t_point *p1, int z[2], t_fdf *data);
 void			perform_position(t_point *p0, t_point *p1, t_fdf *data);
 void			init_cam(t_fdf *data);

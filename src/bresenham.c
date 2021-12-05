@@ -6,7 +6,7 @@
 /*   By: igomez-p <ire.go.pla@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/05 13:44:00 by igomez-p          #+#    #+#             */
-/*   Updated: 2021/12/05 14:37:49 by igomez-p         ###   ########.fr       */
+/*   Updated: 2021/12/05 18:36:29 by igomez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	isometric(int *x, int *y, int z, double angle)
 	*y = (pre_x + pre_y) * sin(angle) - z;
 }
 
-void	lowplotline(t_point p0, t_point p1, t_fdf *data, int c)
+void	lowplotline(t_point p0, t_point p1, t_fdf *data)
 {
 	t_vbles	low;
 
@@ -39,7 +39,7 @@ void	lowplotline(t_point p0, t_point p1, t_fdf *data, int c)
 	low.y = p0.y;
 	while (p0.x < p1.x)
 	{
-		my_mlx_pixel_put(data, p0.x, low.y, c);
+		my_mlx_pixel_put(data, p0.x, low.y, data->color);
 		if (low.d > 0)
 		{
 			low.y = low.y + low.yi;
@@ -51,7 +51,7 @@ void	lowplotline(t_point p0, t_point p1, t_fdf *data, int c)
 	}
 }
 
-void	highplotline(t_point p0, t_point p1, t_fdf *data, int c)
+void	highplotline(t_point p0, t_point p1, t_fdf *data)
 {
 	t_vbles	high;
 
@@ -67,7 +67,7 @@ void	highplotline(t_point p0, t_point p1, t_fdf *data, int c)
 	high.x = p0.x;
 	while (p0.y < p1.y)
 	{
-		my_mlx_pixel_put(data, high.x, p0.y, c);
+		my_mlx_pixel_put(data, high.x, p0.y, data->color);
 		if (high.d > 0)
 		{
 			high.x = high.x + high.xi;
@@ -79,7 +79,7 @@ void	highplotline(t_point p0, t_point p1, t_fdf *data, int c)
 	}
 }
 
-void	plotline(t_point p0, int x1, int y1, t_fdf *data, int c)
+void	plotline(t_point p0, int x1, int y1, t_fdf *data)
 {
 	int		z[2];
 	t_point	p1;
@@ -95,15 +95,15 @@ void	plotline(t_point p0, int x1, int y1, t_fdf *data, int c)
 	if (abs(p1.y - p0.y) < abs(p1.x - p0.x))
 	{
 		if (p0.x > p1.x)
-			lowplotline(p1, p0, data, c);
+			lowplotline(p1, p0, data);
 		else
-			lowplotline(p0, p1, data, c);
+			lowplotline(p0, p1, data);
 	}
 	else
 	{
 		if (p0.y > p1.y)
-			highplotline(p1, p0, data, c);
+			highplotline(p1, p0, data);
 		else
-			highplotline(p0, p1, data, c);
+			highplotline(p0, p1, data);
 	}
 }

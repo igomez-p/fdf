@@ -6,7 +6,7 @@
 /*   By: igomez-p <ire.go.pla@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 19:27:57 by igomez-p          #+#    #+#             */
-/*   Updated: 2021/12/05 14:22:28 by igomez-p         ###   ########.fr       */
+/*   Updated: 2021/12/05 18:33:01 by igomez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ void	init_struct(t_fdf *info)
 	info->win.hei = 0;
 	info->ncols = 0;
 	info->nrows = 0;
+	info->read.b = NULL;
+	info->read.l = NULL;
 }
 
 static void	resize_window(t_fdf *c)
