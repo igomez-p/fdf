@@ -6,7 +6,7 @@
 /*   By: igomez-p <igomez-p@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/24 14:31:02 by igomez-p          #+#    #+#             */
-/*   Updated: 2021/12/06 07:36:20 by igomez-p         ###   ########.fr       */
+/*   Updated: 2021/12/06 11:48:21 by igomez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,17 @@ int	set_color(int x, int y, t_fdf *data)
 	z = data->map[y][x];
 	i = (float)data->r.range / 6;
 	if (z <= data->r.min + i)
-		return (0x00ffdc);
+		return (COLOR_1);
 	else if (z <= (data->r.min + 2 * i))
-		return (0xff6b38);
+		return (COLOR_2);
 	else if (z <= (data->r.min + 3 * i))
-		return (0xffffff);
+		return (COLOR_3);
 	else if (z <= (data->r.min + 4 * i))
-		return (0xe23030);
+		return (COLOR_4);
 	else if (z <= (data->r.min + 5 * i))
-		return (0x0083ff);
+		return (COLOR_5);
 	else if (z <= (data->r.min + 6 * i))
-		return (0xffec00);
+		return (COLOR_6);
 	return (0);
 }
 

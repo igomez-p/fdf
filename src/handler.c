@@ -6,7 +6,7 @@
 /*   By: igomez-p <igomez-p@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 18:19:02 by igomez-p          #+#    #+#             */
-/*   Updated: 2021/12/06 10:54:29 by igomez-p         ###   ########.fr       */
+/*   Updated: 2021/12/06 11:46:08 by igomez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,5 @@ void	clean_exit(t_fdf *c, char *str, int error)
 		if (c->read.b)
 			free(c->read.b);
 	}
-	//system("leaks fdf");
 	exit(1);
 }

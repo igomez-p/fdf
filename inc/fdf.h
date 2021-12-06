@@ -6,7 +6,7 @@
 /*   By: igomez-p <igomez-p@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 18:51:44 by igomez-p          #+#    #+#             */
-/*   Updated: 2021/12/06 10:52:10 by igomez-p         ###   ########.fr       */
+/*   Updated: 2021/12/06 11:50:03 by igomez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,20 @@
 # include <string.h>
 # include <math.h>
 # include "libft.h"
-# define MAX_LEN			10
-# define VIEW_ANGLE			32.5
-# define SQUARES_SEC		0.09
-# define RADIANS_SEC		0.03
-# define AND_ING			8355711
-# define FRAME_TIME			1000.0
 # define WID_TAM			1000
 # define HEI_TAM			800
 # define ZOOM				8
-# define ROT_X				1
-# define ROT_Y				2
-# define ROT_Z				3
+# define ANGLE				0.1
+# define PERSPECTIVE_ANGLE	0.53
+# define ISOMETRIC			1
+# define PLANE				0
+# define OBLIQUE			0
+# define COLOR_1			0x00ffdc
+# define COLOR_2			0xff6b38
+# define COLOR_3			0xffffff
+# define COLOR_4			0xe23030
+# define COLOR_5			0x0083ff
+# define COLOR_6			0xffec00
 
 typedef struct s_render {
 	int			x;

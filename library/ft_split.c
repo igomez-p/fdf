@@ -6,7 +6,7 @@
 /*   By: igomez-p <igomez-p@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 19:55:02 by igomez-p          #+#    #+#             */
-/*   Updated: 2021/12/06 11:27:39 by igomez-p         ###   ########.fr       */
+/*   Updated: 2021/12/06 11:33:58 by igomez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,17 +74,13 @@ void	ft_split(char const *s1, char c, t_fdf *d)
 		if (ft_strlen(aux))
 		{
 			d->read.buf[k] = ft_strdup(aux);
-			free(aux);
-			aux = NULL;
 			i += (ft_strlen(d->read.buf[k]) + 1);
 			k++;
 		}
 		else
-		{
 			i++;
-			free(aux);
-			aux = NULL;
-		}
+		free(aux);
+		aux = NULL;
 	}
 	d->read.buf[k] = NULL;
 }

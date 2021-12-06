@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   camera.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igomez-p <ire.go.pla@gmail.com>            +#+  +:+       +#+        */
+/*   By: igomez-p <igomez-p@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/05 14:06:45 by igomez-p          #+#    #+#             */
-/*   Updated: 2021/12/05 17:13:39 by igomez-p         ###   ########.fr       */
+/*   Updated: 2021/12/06 11:45:28 by igomez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,11 @@ void	range(t_fdf *data)
 void	init_cam(t_fdf *data)
 {
 	range(data);
-	data->cam.angle = 0.1;
-	data->cam.pangle = 0.53;
-	data->cam.isometric = 1;
-	data->cam.plane = 0;
-	data->cam.oblique = 0;
+	data->cam.angle = ANGLE;
+	data->cam.pangle = PERSPECTIVE_ANGLE;
+	data->cam.isometric = ISOMETRIC;
+	data->cam.plane = PLANE;
+	data->cam.oblique = OBLIQUE;
 	data->cam.zoom = zoom(data->ncols);
 	data->cam.x = WID_TAM / 3 + 100;
 	data->cam.y = HEI_TAM / 2;
