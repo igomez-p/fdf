@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igomez-p <ire.go.pla@gmail.com>            +#+  +:+       +#+        */
+/*   By: igomez-p <igomez-p@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 18:25:18 by igomez-p          #+#    #+#             */
-/*   Updated: 2021/12/05 17:52:06 by igomez-p         ###   ########.fr       */
+/*   Updated: 2021/12/06 08:38:17 by igomez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,19 @@ static int	double_free(char **array)
 {
 	int	i;
 
-	i = 0;
+	i = array_length(array) - 1;
 	if (!array)
 		return (-1);
-	while (array[i])
+	while (i >= 0)
 	{
 		free(array[i]);
 		array[i] = NULL;
-		i++;
+		i--;
+		printf("array[i] %p\n", array[i]);
 	}
 	free(array);
 	array = NULL;
+	printf("array %p\n", array);
 	return (0);
 }
 
@@ -48,6 +50,7 @@ static void	get_wh(char *filename, t_fdf *info)
 	char	**buffer;
 
 	info->nrows = 0;
+	buffer = NULL;
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
 		clean_exit(info, "Fdf file could not be opened\n", 1);
@@ -62,6 +65,7 @@ static void	get_wh(char *filename, t_fdf *info)
 	}
 	free(info->line);
 	info->line = NULL;
+	printf("GET WH: buffer %p | line %p \n", buffer, info->line);
 	close(fd);
 }
 
@@ -71,6 +75,7 @@ static void	fill(char *line, int *map_line)
 	int		i;
 
 	i = 0;
+	buffer = NULL;
 	buffer = ft_split(line, ' ');
 	while (buffer[i])
 	{
@@ -78,6 +83,8 @@ static void	fill(char *line, int *map_line)
 		i++;
 	}
 	double_free(buffer);
+
+	printf("FILL: buffer %p\n", buffer);
 }
 
 void	parse_map(char *filename, t_fdf *map)
@@ -109,4 +116,5 @@ void	parse_map(char *filename, t_fdf *map)
 		free(map->line);
 		map->line = NULL;
 	}
+	printf("line %p | b %p | l %p\n", map->line, map->read.b, map->read.l);
 }

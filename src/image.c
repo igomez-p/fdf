@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   image.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igomez-p <ire.go.pla@gmail.com>            +#+  +:+       +#+        */
+/*   By: igomez-p <igomez-p@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/24 14:31:02 by igomez-p          #+#    #+#             */
-/*   Updated: 2021/12/05 18:45:46 by igomez-p         ###   ########.fr       */
+/*   Updated: 2021/12/06 07:36:20 by igomez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ int	display_img(t_fdf *d)
 		}
 		p.y++;
 	}
-	printf("display");
 	mlx_put_image_to_window(d->libx.mlx, d->libx.window, d->win.img, 0, 0);
 	return (1);
 }

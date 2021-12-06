@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igomez-p <ire.go.pla@gmail.com>            +#+  +:+       +#+        */
+/*   By: igomez-p <igomez-p@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 18:51:44 by igomez-p          #+#    #+#             */
-/*   Updated: 2021/12/05 19:02:41 by igomez-p         ###   ########.fr       */
+/*   Updated: 2021/12/06 06:47:47 by igomez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@
 # define RADIANS_SEC		0.03
 # define AND_ING			8355711
 # define FRAME_TIME			1000.0
-# define WID_TAM			1600
-# define HEI_TAM			1500
-# define ZOOM				30
+# define WID_TAM			1000
+# define HEI_TAM			800
+# define ZOOM				8
 # define ROT_X				1
 # define ROT_Y				2
 # define ROT_Z				3
