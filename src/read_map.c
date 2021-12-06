@@ -6,7 +6,7 @@
 /*   By: igomez-p <igomez-p@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 18:25:18 by igomez-p          #+#    #+#             */
-/*   Updated: 2021/12/06 08:38:17 by igomez-p         ###   ########.fr       */
+/*   Updated: 2021/12/06 09:56:00 by igomez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,5 +116,4 @@ void	parse_map(char *filename, t_fdf *map)
 		free(map->line);
 		map->line = NULL;
 	}
-	printf("line %p | b %p | l %p\n", map->line, map->read.b, map->read.l);
 }

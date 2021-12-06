@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igomez-p <ire.go.pla@gmail.com>            +#+  +:+       +#+        */
+/*   By: igomez-p <igomez-p@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/03 16:50:00 by igomez-p          #+#    #+#             */
-/*   Updated: 2021/12/05 17:30:12 by igomez-p         ###   ########.fr       */
+/*   Updated: 2021/12/06 09:57:05 by igomez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,7 @@ int	get_next_line(int fd, char **line, char **b, char **l)
 		return (-1);
 	auxiliar(fd, *b, l);
 	free(*b);
+	*b = NULL;
 	aux = ft_strchr(*l, '\n');
 	if (aux != NULL)
 	{

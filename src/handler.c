@@ -6,7 +6,7 @@
 /*   By: igomez-p <igomez-p@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 18:19:02 by igomez-p          #+#    #+#             */
-/*   Updated: 2021/12/06 08:28:28 by igomez-p         ###   ########.fr       */
+/*   Updated: 2021/12/06 09:56:13 by igomez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,9 @@ void	clean_exit(t_fdf *c, char *str, int error)
 			mlx_destroy_image(c->libx.mlx, c->win.img);
 		if (c->libx.window)
 			mlx_destroy_window(c->libx.mlx, c->libx.window);
+		printf("map %p\n", c->map);
 		free_map(c);
+		printf("map free %p\n", c->map);
 		if (c->line)
 			free(c->line);
 		if (c->read.l)
@@ -75,6 +77,7 @@ void	clean_exit(t_fdf *c, char *str, int error)
 		if (c->read.b)
 			free(c->read.b);
 	}
+	printf("line %p | b %p | l %p\n", c->line, c->read.b, c->read.l);
 	//system("leaks fdf");
 	exit(1);
 }
