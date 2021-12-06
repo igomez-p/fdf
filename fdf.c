@@ -6,7 +6,7 @@
 /*   By: igomez-p <igomez-p@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 18:52:45 by igomez-p          #+#    #+#             */
-/*   Updated: 2021/12/06 15:25:52 by igomez-p         ###   ########.fr       */
+/*   Updated: 2021/12/06 16:15:56 by igomez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,19 +35,12 @@ int	main(int argc, char *argv[])
 	check_argc(&cub, argc);
 	check_extension(argv[1]);
 	parse_map(argv[1], &cub);
-	printf("parse map\n");
 	init_cam(&cub);
-	printf("init cam\n");
 	init_mlx_func(&cub);
-	printf("init mlx\n");
 	mlx_hook(cub.libx.window, 2, 1, key_press_handler, &cub);
 	mlx_hook(cub.libx.window, 3, 2, key_release_handler, &cub);
 	mlx_hook(cub.libx.window, 17, (1U << 17), exit_handler, &cub);
 	display_img(&cub);
-	printf("display\n");
-	//if (cub.zoom)
-	//	mlx_mouse_hook(cub.libx.window, zoom_bonus, &cub);
-	printf("mlx hook\n");
 	mlx_loop(cub.libx.mlx);
 	return (0);
 }

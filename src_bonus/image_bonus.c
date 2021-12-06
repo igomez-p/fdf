@@ -6,7 +6,7 @@
 /*   By: igomez-p <igomez-p@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/24 14:31:02 by igomez-p          #+#    #+#             */
-/*   Updated: 2021/12/06 15:31:45 by igomez-p         ###   ########.fr       */
+/*   Updated: 2021/12/06 17:43:09 by igomez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,29 +39,32 @@ int	set_color(int x, int y, t_fdf *data)
 	return (0);
 }
 
-/*static void	put_controls(void *addr, void *window)
+static void	put_controls(void *mlx, void *window)
 {
-	mlx_string_put(addr, window, 200 / 4, 50, COLOR_3, "CONTROLS");
-	mlx_string_put(addr, window, 200 / 4, 55, COLOR_1, "________");
-	mlx_string_put(addr, window, 200 / 4, 80, COLOR_3, "Zoom: Scroll");
-	mlx_string_put(addr, window, 200 / 4, 100, COLOR_3, "Move");
-	mlx_string_put(addr, window, 200 / 4, 105, COLOR_1, "____");
-	mlx_string_put(addr, window, 200 / 4, 130, COLOR_3, "W -> Up");
-	mlx_string_put(addr, window, 200 / 4, 150, COLOR_1, "S -> Down");
-	mlx_string_put(addr, window, 200 / 4, 170, COLOR_3, "A -> Left");
-	mlx_string_put(addr, window, 200 / 4, 190, COLOR_3, "D -> Right");
-	mlx_string_put(addr, window, 200 / 4, 220, COLOR_3, "Projection");
-	mlx_string_put(addr, window, 200 / 4, 225, COLOR_1, "__________");
-	mlx_string_put(addr, window, 200 / 4, 250, COLOR_3, "ISO -> I");
-	mlx_string_put(addr, window, 200 / 4, 270, COLOR_3, "PLAN -> P");
-	mlx_string_put(addr, window, 200 / 4, 290, COLOR_3, "OBLIQUE -> O");
-	mlx_string_put(addr, window, 200 / 4, 320, COLOR_3, "Rotation: Arrows");
-	mlx_string_put(addr, window, 200 / 4, 325, COLOR_1, "________________");
-	mlx_string_put(addr, window, 200 / 4, 350, COLOR_3, "Left -> X Axis");
-	mlx_string_put(addr, window, 200 / 4, 370, COLOR_3, "Right -> Y Axis");
-	mlx_string_put(addr, window, 200 / 4, 390, COLOR_3, "Up -> Z Axis");
-	mlx_string_put(addr, window, 200 / 4, 410, COLOR_3, "Down -> Reset");
-}*/
+	int x;
+
+	x = 200 / 4;
+	mlx_string_put(mlx, window, x, 40, COLOR_3, "CONTROLS");
+	mlx_string_put(mlx, window, x, 45, COLOR_1, "________");
+	mlx_string_put(mlx, window, x, 70, COLOR_5, "Zoom: Scroll");
+	mlx_string_put(mlx, window, x, 100, COLOR_5, "Move");
+	mlx_string_put(mlx, window, x, 105, COLOR_1, "____");
+	mlx_string_put(mlx, window, x, 130, COLOR_3, "W -> Up");
+	mlx_string_put(mlx, window, x, 150, COLOR_3, "S -> Down");
+	mlx_string_put(mlx, window, x, 170, COLOR_3, "A -> Left");
+	mlx_string_put(mlx, window, x, 190, COLOR_3, "D -> Right");
+	mlx_string_put(mlx, window, x, 220, COLOR_5, "Projection");
+	mlx_string_put(mlx, window, x, 225, COLOR_1, "__________");
+	mlx_string_put(mlx, window, x, 250, COLOR_3, "I -> Isometric");
+	mlx_string_put(mlx, window, x, 270, COLOR_3, "P -> Plane");
+	mlx_string_put(mlx, window, x, 290, COLOR_3, "O -> Oblique");
+	mlx_string_put(mlx, window, x, 320, COLOR_5, "Rotation: Arrows");
+	mlx_string_put(mlx, window, x, 325, COLOR_1, "________________");
+	mlx_string_put(mlx, window, x, 350, COLOR_3, "Left -> X Axis");
+	mlx_string_put(mlx, window, x, 370, COLOR_3, "Right -> Y Axis");
+	mlx_string_put(mlx, window, x, 390, COLOR_3, "Up -> Z Axis");
+	mlx_string_put(mlx, window, x, 410, COLOR_3, "Down -> Reset");
+}
 
 int	display_img(t_fdf *d)
 {
@@ -83,10 +86,7 @@ int	display_img(t_fdf *d)
 		p.y++;
 	}
 	mlx_put_image_to_window(d->libx.mlx, d->libx.window, d->win.img, 0, 0);	
-	printf("hola\n");
-	//put_controls(d->win.addr, d->libx.window);
-	printf("en medio\n");
+	put_controls(d->libx.mlx, d->libx.window);
 	mlx_mouse_hook(d->libx.window, zoom_bonus, d);
-	printf("adios\n");
 	return (1);
 }
