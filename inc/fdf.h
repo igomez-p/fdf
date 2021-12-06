@@ -6,7 +6,7 @@
 /*   By: igomez-p <igomez-p@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 18:51:44 by igomez-p          #+#    #+#             */
-/*   Updated: 2021/12/06 11:50:03 by igomez-p         ###   ########.fr       */
+/*   Updated: 2021/12/06 12:28:32 by igomez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,10 @@
 # define ISOMETRIC			1
 # define PLANE				0
 # define OBLIQUE			0
+# define PERSPECTIVE_ANGLE2	0.2
+# define ISOMETRIC2			0
+# define PLANE2				1
+# define OBLIQUE2			1
 # define COLOR_1			0x00ffdc
 # define COLOR_2			0xff6b38
 # define COLOR_3			0xffffff
