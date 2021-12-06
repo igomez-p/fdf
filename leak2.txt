@@ -1,0 +1,38 @@
+==51617== Memcheck, a memory error detector
+==51617== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==51617== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==51617== Command: ./fdf test_maps/42.fdf
+==51617== Parent PID: 36676
+==51617== 
+==51617== 
+==51617== HEAP SUMMARY:
+==51617==     in use at exit: 93,140 bytes in 400 blocks
+==51617==   total heap usage: 1,570 allocs, 1,170 frees, 127,117 bytes allocated
+==51617== 
+==51617== 148 bytes in 148 blocks are definitely lost in loss record 31 of 53
+==51617==    at 0x48397B5: malloc (vg_replace_malloc.c:381)
+==51617==    by 0x10BB15: ft_word (ft_split.c:44)
+==51617==    by 0x10BC03: ft_split (ft_split.c:73)
+==51617==    by 0x10AB1C: get_wh (read_map.c:55)
+==51617==    by 0x10AC94: parse_map (read_map.c:87)
+==51617==    by 0x10A5BA: main (fdf.c:37)
+==51617== 
+==51617== 148 bytes in 148 blocks are definitely lost in loss record 32 of 53
+==51617==    at 0x48397B5: malloc (vg_replace_malloc.c:381)
+==51617==    by 0x10BB15: ft_word (ft_split.c:44)
+==51617==    by 0x10BC03: ft_split (ft_split.c:73)
+==51617==    by 0x10ABF7: fill (read_map.c:72)
+==51617==    by 0x10AD66: parse_map (read_map.c:100)
+==51617==    by 0x10A5BA: main (fdf.c:37)
+==51617== 
+==51617== LEAK SUMMARY:
+==51617==    definitely lost: 296 bytes in 296 blocks
+==51617==    indirectly lost: 0 bytes in 0 blocks
+==51617==      possibly lost: 0 bytes in 0 blocks
+==51617==    still reachable: 92,844 bytes in 104 blocks
+==51617==         suppressed: 0 bytes in 0 blocks
+==51617== Reachable blocks (those to which a pointer was found) are not shown.
+==51617== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==51617== 
+==51617== For lists of detected and suppressed errors, rerun with: -s
+==51617== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 2 from 1)

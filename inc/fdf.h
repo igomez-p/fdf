@@ -6,7 +6,7 @@
 /*   By: igomez-p <igomez-p@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 18:51:44 by igomez-p          #+#    #+#             */
-/*   Updated: 2021/12/06 10:39:01 by igomez-p         ###   ########.fr       */
+/*   Updated: 2021/12/06 10:52:10 by igomez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,9 +126,7 @@ void			clean_exit(t_fdf *c, char *str, int error);
 void			free_map(t_fdf *c);
 void			my_mlx_pixel_put(t_fdf *c, int x, int y, int color);
 void			check_extension(char *filename);
-//char			**ft_split(char const *s1, char c);
 void			ft_split(char const *s1, char c, t_fdf *d);
-//void			free_str_exit(t_fdf *c, char *txt, char *str);
 void			parse_map(char *filename, t_fdf *map);
 void			plotline(t_point p0, int x1, int y1, t_fdf *data);
 void			perform_zoom(t_point *p0, t_point *p1, int z[2], t_fdf *data);

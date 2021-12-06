@@ -6,7 +6,7 @@
 /*   By: igomez-p <igomez-p@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 18:25:18 by igomez-p          #+#    #+#             */
-/*   Updated: 2021/12/06 10:45:49 by igomez-p         ###   ########.fr       */
+/*   Updated: 2021/12/06 10:55:34 by igomez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,19 +35,16 @@ static int	double_free(t_fdf *data)
 	{
 		free(data->read.buf[i]);
 		data->read.buf[i] = NULL;
-		printf("array[i] %p\n", data->read.buf[i]);
 		i--;
 	}
 	free(data->read.buf);
 	data->read.buf = NULL;
-	printf("array %p\n", data->read.buf);
 	return (0);
 }
 
 static void	get_wh(char *filename, t_fdf *info)
 {
 	int		fd;
-	//char	**buffer;
 
 	info->nrows = 0;
 	fd = open(filename, O_RDONLY);
@@ -55,28 +52,23 @@ static void	get_wh(char *filename, t_fdf *info)
 		clean_exit(info, "Fdf file could not be opened\n", 1);
 	while (get_next_line(fd, &info->line, &info->read.b, &info->read.l))
 	{
-		//info->read.buf = ft_split(info->line, ' ');
 		ft_split(info->line, ' ', info);
 		info->ncols = array_length(info->read.buf);
 		info->nrows++;
 		double_free(info);
 		free(info->line);
 		info->line = NULL;
-		//double_free(buffer);
 	}
 	free(info->line);
 	info->line = NULL;
-	printf("GET WH: buffer %p | line %p \n", info->read.buf, info->line);
 	close(fd);
 }
 
 static void	fill(char *line, int *map_line, t_fdf *data)
 {
-	//char	**buffer;
 	int		i;
 
 	i = 0;
-	//data->read.buf = ft_split(line, ' ');
 	ft_split(line, ' ', data);
 	while (data->read.buf[i])
 	{
@@ -84,8 +76,6 @@ static void	fill(char *line, int *map_line, t_fdf *data)
 		i++;
 	}
 	double_free(data);
-
-	printf("FILL: buffer %p\n", data->read.buf);
 }
 
 void	parse_map(char *filename, t_fdf *map)
@@ -112,9 +102,4 @@ void	parse_map(char *filename, t_fdf *map)
 		map->line = NULL;
 	}
 	close(fd);
-	if (map->line)
-	{
-		free(map->line);
-		map->line = NULL;
-	}
 }
