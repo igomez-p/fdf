@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: igomez-p <ire.go.pla@gmail.com>            +#+  +:+       +#+         #
+#    By: igomez-p <igomez-p@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/06 15:29:03 by igomez-p          #+#    #+#              #
-#    Updated: 2021/12/05 14:38:29 by igomez-p         ###   ########.fr        #
+#    Updated: 2021/12/06 13:02:27 by igomez-p         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,11 +25,26 @@ SRC = fdf.c				\
 	  library/str_functions.c	\
 	  library/number_functions.c\
 
+SRC_BONUS = fdf.c					\
+			src_bonus/init_bonus.c		\
+			src_bonus/read_map_bonus.c	\
+			src_bonus/handler_bonus.c		\
+			src_bonus/image_bonus.c		\
+			src_bonus/bresenham_bonus.c	\
+			src_bonus/camera_bonus.c		\
+			src_bonus/movement_bonus.c	\
+			library/ft_split.c \
+			library/get_next_line.c \
+			library/mem_functions.c	\
+			library/str_functions.c	\
+			library/number_functions.c\
+
 LIB = minilibx-$(OS)/libmlx.a
 
 OS  = $(shell uname -s)
 
 OBJ = $(SRC:.c=.o)
+OBJ_BONUS = $(SRC_BONUS:.c=.o)
 
 ifeq ($(OS), Darwin)
     MINILIB = -framework OpenGL -framework AppKit
@@ -52,9 +67,13 @@ $(NAME): $(OBJ)
 		$(MAKE) -C minilibx-$(OS)/
 		gcc -Wall -Werror -Wextra -g $(OBJ) -I /usr/local/include $(LIB) $(MINILIB) -o $(NAME)
 
+bonus: $(OBJ_BONUS)
+		$(MAKE) -C minilibx-$(OS)/
+		gcc -Wall -Werror -Wextra -g $(OBJ_BONUS) -I /usr/local/include $(LIB) $(MINILIB) -o $(NAME)
+
 clean:
 		make -C minilibx-$(OS) clean
-		rm -rf $(OBJ)
+		rm -rf $(OBJ) $(OBJ_BONUS)
 
 fclean: clean
 		make -C minilibx-$(OS) clean

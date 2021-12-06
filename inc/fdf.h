@@ -6,7 +6,7 @@
 /*   By: igomez-p <igomez-p@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 18:51:44 by igomez-p          #+#    #+#             */
-/*   Updated: 2021/12/06 12:28:32 by igomez-p         ###   ########.fr       */
+/*   Updated: 2021/12/06 13:52:24 by igomez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,18 @@
 # define PLANE				0
 # define OBLIQUE			0
 # define PERSPECTIVE_ANGLE2	0.2
-# define ISOMETRIC2			0
-# define PLANE2				1
-# define OBLIQUE2			1
+# define ISOMETRIC0			0
+# define PLANE1				1
+# define OBLIQUE1			1
 # define COLOR_1			0x00ffdc
 # define COLOR_2			0xff6b38
 # define COLOR_3			0xffffff
 # define COLOR_4			0xe23030
 # define COLOR_5			0x0083ff
 # define COLOR_6			0xffec00
+# define ROT_X				1
+# define ROT_Y				2
+# define ROT_Z				3
 
 typedef struct s_render {
 	int			x;
@@ -115,6 +118,8 @@ typedef struct s_cub {
 	char		*line;
 	int			**map;
 	int			color;
+	int			zoom;
+	int			mov;
 	t_render	res;
 	t_minilix	libx;
 	t_img		win;
@@ -139,5 +144,10 @@ void			perform_zoom(t_point *p0, t_point *p1, int z[2], t_fdf *data);
 void			perform_position(t_point *p0, t_point *p1, t_fdf *data);
 void			init_cam(t_fdf *data);
 int				display_img(t_fdf *d);
+
+int				zoom_bonus(int button, int x, int y, t_fdf *data);
+void			hooks_perspective(t_fdf *data, int keycode);
+void			cam_mov(int keycode, t_fdf *data);
+void			rotate(int *x, int *y, int *z, t_fdf *data);
 
 #endif

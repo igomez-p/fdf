@@ -6,7 +6,7 @@
 /*   By: igomez-p <igomez-p@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 19:27:57 by igomez-p          #+#    #+#             */
-/*   Updated: 2021/12/06 12:15:47 by igomez-p         ###   ########.fr       */
+/*   Updated: 2021/12/06 12:54:01 by igomez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ static void	init_aux(t_fdf *info)
 	info->r.max = 0;
 	info->r.min = 0;
 	info->r.range = 0;
+	info->zoom = 1;
 }
 
 void	init_struct(t_fdf *info)
