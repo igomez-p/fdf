@@ -6,7 +6,7 @@
 /*   By: igomez-p <igomez-p@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/24 14:31:02 by igomez-p          #+#    #+#             */
-/*   Updated: 2021/12/06 11:48:21 by igomez-p         ###   ########.fr       */
+/*   Updated: 2021/12/06 18:11:48 by igomez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	my_mlx_pixel_put(t_fdf *c, int x, int y, int color)
 {
+	if (x >= WID_TAM || x < 0 || y >= HEI_TAM || y < 0)
+		return ;
 	c->win.addr[c->win.wid * y + x] = color;
 }
 
