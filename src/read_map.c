@@ -6,7 +6,7 @@
 /*   By: igomez-p <igomez-p@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 18:25:18 by igomez-p          #+#    #+#             */
-/*   Updated: 2021/12/06 09:56:00 by igomez-p         ###   ########.fr       */
+/*   Updated: 2021/12/06 10:45:49 by igomez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,67 +24,68 @@ static int	array_length(char **array)
 	return (i);
 }
 
-static int	double_free(char **array)
+static int	double_free(t_fdf *data)
 {
 	int	i;
 
-	i = array_length(array) - 1;
-	if (!array)
+	i = data->ncols - 1;
+	if (!data->read.buf)
 		return (-1);
 	while (i >= 0)
 	{
-		free(array[i]);
-		array[i] = NULL;
+		free(data->read.buf[i]);
+		data->read.buf[i] = NULL;
+		printf("array[i] %p\n", data->read.buf[i]);
 		i--;
-		printf("array[i] %p\n", array[i]);
 	}
-	free(array);
-	array = NULL;
-	printf("array %p\n", array);
+	free(data->read.buf);
+	data->read.buf = NULL;
+	printf("array %p\n", data->read.buf);
 	return (0);
 }
 
 static void	get_wh(char *filename, t_fdf *info)
 {
 	int		fd;
-	char	**buffer;
+	//char	**buffer;
 
 	info->nrows = 0;
-	buffer = NULL;
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
 		clean_exit(info, "Fdf file could not be opened\n", 1);
 	while (get_next_line(fd, &info->line, &info->read.b, &info->read.l))
 	{
-		buffer = ft_split(info->line, ' ');
-		info->ncols = array_length(buffer);
+		//info->read.buf = ft_split(info->line, ' ');
+		ft_split(info->line, ' ', info);
+		info->ncols = array_length(info->read.buf);
 		info->nrows++;
+		double_free(info);
 		free(info->line);
 		info->line = NULL;
-		double_free(buffer);
+		//double_free(buffer);
 	}
 	free(info->line);
 	info->line = NULL;
-	printf("GET WH: buffer %p | line %p \n", buffer, info->line);
+	printf("GET WH: buffer %p | line %p \n", info->read.buf, info->line);
 	close(fd);
 }
 
-static void	fill(char *line, int *map_line)
+static void	fill(char *line, int *map_line, t_fdf *data)
 {
-	char	**buffer;
+	//char	**buffer;
 	int		i;
 
 	i = 0;
-	buffer = NULL;
-	buffer = ft_split(line, ' ');
-	while (buffer[i])
+	//data->read.buf = ft_split(line, ' ');
+	ft_split(line, ' ', data);
+	while (data->read.buf[i])
 	{
-		map_line[i] = ft_atoi(buffer[i]);
+		map_line[i] = ft_atoi(data->read.buf[i]);
 		i++;
 	}
-	double_free(buffer);
+	double_free(data);
 
-	printf("FILL: buffer %p\n", buffer);
+	printf("FILL: buffer %p\n", data->read.buf);
 }
 
 void	parse_map(char *filename, t_fdf *map)
@@ -106,7 +107,7 @@ void	parse_map(char *filename, t_fdf *map)
 	i = 0;
 	while (get_next_line(fd, &map->line, &map->read.b, &map->read.l) > 0)
 	{
-		fill(map->line, map->map[i++]);
+		fill(map->line, map->map[i++], map);
 		free(map->line);
 		map->line = NULL;
 	}

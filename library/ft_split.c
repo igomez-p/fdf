@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igomez-p <ire.go.pla@gmail.com>            +#+  +:+       +#+        */
+/*   By: igomez-p <igomez-p@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 19:55:02 by igomez-p          #+#    #+#             */
-/*   Updated: 2021/12/04 20:25:08 by igomez-p         ###   ########.fr       */
+/*   Updated: 2021/12/06 10:40:10 by igomez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static char	*ft_word(char const *s, char c, int i)
 	return (w);
 }
 
-char	**ft_split(char const *s1, char c)
+/*char	**ft_split(char const *s1, char c)
 {
 	char	**m;
 	int		i;
@@ -81,4 +81,32 @@ char	**ft_split(char const *s1, char c)
 	}
 	m[k] = NULL;
 	return (m);
+}
+*/
+
+void	ft_split(char const *s1, char c, t_fdf *d)
+{
+	//char	**m;
+	int		i;
+	int		k;
+
+	if (!s1)
+		return ;
+	d->read.buf = (char **)malloc(sizeof(char *) * (cont_char(s1, c) + 1));
+	if (!d->read.buf)
+		return ;
+	i = 0;
+	k = 0;
+	while (i <= (int)ft_strlen(s1) && cont_char(s1, c))
+	{
+		if (ft_strlen(ft_word(s1, c, i)))
+		{
+			d->read.buf[k] = ft_word(s1, c, i);
+			i += (ft_strlen(d->read.buf[k]) + 1);
+			k++;
+		}
+		else
+			i++;
+	}
+	d->read.buf[k] = NULL;
 }
