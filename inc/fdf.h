@@ -6,12 +6,12 @@
 /*   By: igomez-p <igomez-p@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 18:51:44 by igomez-p          #+#    #+#             */
-/*   Updated: 2021/12/06 13:52:24 by igomez-p         ###   ########.fr       */
+/*   Updated: 2021/12/07 06:16:57 by igomez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB_H
-# define CUB_H
+#ifndef FDF_H
+# define FDF_H
 # ifdef	MAC_SYSTEM
 #  include "../minilibx-Darwin/mlx.h"
 # elif	LINUX_SYSTEM
