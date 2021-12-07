@@ -6,7 +6,7 @@
 /*   By: igomez-p <igomez-p@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 18:19:02 by igomez-p          #+#    #+#             */
-/*   Updated: 2021/12/07 06:03:43 by igomez-p         ###   ########.fr       */
+/*   Updated: 2021/12/07 06:14:24 by igomez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ int	key_press_handler(int key, t_fdf *c)
 		c->win.img = mlx_new_image(c->libx.mlx, c->win.wid, c->win.hei);
 		if (!c->win.img)
 			clean_exit(c, "When creating a new image\n", 1);
-		c->win.addr = (int *)mlx_get_data_addr(c->win.img, &c->win.bpp, &c->win.sz,
-				&c->win.endian);
+		c->win.addr = (int *)mlx_get_data_addr(c->win.img, &c->win.bpp,
+				&c->win.sz, &c->win.endian);
 		display_img(c);
 	}
 	return (1);

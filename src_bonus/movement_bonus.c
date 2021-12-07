@@ -6,7 +6,7 @@
 /*   By: igomez-p <igomez-p@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 12:24:00 by igomez-p          #+#    #+#             */
-/*   Updated: 2021/12/06 15:59:48 by igomez-p         ###   ########.fr       */
+/*   Updated: 2021/12/07 06:13:29 by igomez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,8 @@ int	zoom_bonus(int button, int x, int y, t_fdf *c)
 {
 	x++;
 	y++;
-	if (button == M_SCR_U && c->cam.zoom) {
+	if (button == M_SCR_U && c->cam.zoom)
 		c->cam.zoom += 1;
-	}
 	if (button == M_SCR_D && c->cam.zoom)
 		c->cam.zoom -= 1;
 	if (!c->cam.zoom)
@@ -50,8 +49,8 @@ int	zoom_bonus(int button, int x, int y, t_fdf *c)
 		c->win.img = mlx_new_image(c->libx.mlx, c->win.wid, c->win.hei);
 		if (!c->win.img)
 			clean_exit(c, "When creating a new image\n", 1);
-		c->win.addr = (int *)mlx_get_data_addr(c->win.img, &c->win.bpp, &c->win.sz,
-				&c->win.endian);
+		c->win.addr = (int *)mlx_get_data_addr(c->win.img, &c->win.bpp,
+				&c->win.sz, &c->win.endian);
 		display_img(c);
 	}
 	return (0);

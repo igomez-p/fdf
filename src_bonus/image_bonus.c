@@ -6,7 +6,7 @@
 /*   By: igomez-p <igomez-p@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/24 14:31:02 by igomez-p          #+#    #+#             */
-/*   Updated: 2021/12/06 18:05:43 by igomez-p         ###   ########.fr       */
+/*   Updated: 2021/12/07 06:15:27 by igomez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	set_color(int x, int y, t_fdf *data)
 
 static void	put_controls(void *mlx, void *window)
 {
-	int x;
+	int	x;
 
 	x = 200 / 4;
 	mlx_string_put(mlx, window, x, 40, COLOR_3, "CONTROLS");
@@ -87,7 +87,7 @@ int	display_img(t_fdf *d)
 		}
 		p.y++;
 	}
-	mlx_put_image_to_window(d->libx.mlx, d->libx.window, d->win.img, 0, 0);	
+	mlx_put_image_to_window(d->libx.mlx, d->libx.window, d->win.img, 0, 0);
 	put_controls(d->libx.mlx, d->libx.window);
 	mlx_mouse_hook(d->libx.window, zoom_bonus, d);
 	return (1);
