@@ -6,7 +6,7 @@
 /*   By: igomez-p <igomez-p@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 18:25:18 by igomez-p          #+#    #+#             */
-/*   Updated: 2021/12/06 12:36:30 by igomez-p         ###   ########.fr       */
+/*   Updated: 2021/12/07 07:13:40 by igomez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static void	get_wh(char *filename, t_fdf *data)
 	data->line = NULL;
 	close(fd);
 	if (data->nrows == 0 || data->ncols == 0)
-		clean_exit(data, "There is no map.\n", 1);
+		clean_exit(data, "There is no map or it has only one line.\n", 1);
 }
 
 static void	fill(char *line, int *map_line, t_fdf *data)
@@ -97,7 +97,7 @@ void	parse_map(char *filename, t_fdf *map)
 		i++;
 	}
 	i = 0;
-	while (get_next_line(fd, &map->line, &map->read.b, &map->read.l) > 0)
+	while (get_next_line(fd, &map->line, &map->read.b, &map->read.l))
 	{
 		fill(map->line, map->map[i++], map);
 		free(map->line);
