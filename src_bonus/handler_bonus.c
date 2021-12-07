@@ -6,7 +6,7 @@
 /*   By: igomez-p <igomez-p@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/27 18:19:02 by igomez-p          #+#    #+#             */
-/*   Updated: 2021/12/06 16:43:09 by igomez-p         ###   ########.fr       */
+/*   Updated: 2021/12/07 06:03:43 by igomez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	clean_exit(t_fdf *c, char *str, int error)
 	else
 		write(1, str, len);
 	if (c != NULL)
-	{
+	{	
 		if (c->win.img)
 			mlx_destroy_image(c->libx.mlx, c->win.img);
 		if (c->libx.window)

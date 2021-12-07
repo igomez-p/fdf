@@ -6,7 +6,7 @@
 /*   By: igomez-p <igomez-p@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 19:55:02 by igomez-p          #+#    #+#             */
-/*   Updated: 2021/12/06 11:33:58 by igomez-p         ###   ########.fr       */
+/*   Updated: 2021/12/07 06:08:53 by igomez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,7 @@ static char	*ft_word(char const *s, char c, int i)
 
 void	ft_split(char const *s1, char c, t_fdf *d)
 {
-	int		i;
-	int		k;
+	int		i[2];
 	char	*aux;
 
 	if (!s1)
@@ -66,21 +65,21 @@ void	ft_split(char const *s1, char c, t_fdf *d)
 	d->read.buf = (char **)malloc(sizeof(char *) * (cont_char(s1, c) + 1));
 	if (!d->read.buf)
 		return ;
-	i = 0;
-	k = 0;
-	while (i <= (int)ft_strlen(s1) && cont_char(s1, c))
+	i[0] = 0;
+	i[1] = 0;
+	while (i[0] <= (int)ft_strlen(s1) && cont_char(s1, c))
 	{
-		aux = ft_word(s1, c, i);
+		aux = ft_word(s1, c, i[0]);
 		if (ft_strlen(aux))
 		{
-			d->read.buf[k] = ft_strdup(aux);
-			i += (ft_strlen(d->read.buf[k]) + 1);
-			k++;
+			d->read.buf[i[1]] = ft_strdup(aux);
+			i[0] += (ft_strlen(d->read.buf[i[1]]) + 1);
+			i[1]++;
 		}
 		else
-			i++;
+			i[0]++;
 		free(aux);
 		aux = NULL;
 	}
-	d->read.buf[k] = NULL;
+	d->read.buf[i[1]] = NULL;
 }
