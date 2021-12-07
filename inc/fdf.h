@@ -6,7 +6,7 @@
 /*   By: igomez-p <igomez-p@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 18:51:44 by igomez-p          #+#    #+#             */
-/*   Updated: 2021/12/07 06:16:57 by igomez-p         ###   ########.fr       */
+/*   Updated: 2021/12/07 06:18:23 by igomez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ typedef struct s_vbles {
 	int			yi;
 }				t_vbles;
 
-typedef struct s_cub {
+typedef struct s_fdf {
 	int			nrows;
 	int			ncols;
 	char		*line;
