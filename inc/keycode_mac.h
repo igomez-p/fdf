@@ -6,7 +6,7 @@
 /*   By: igomez-p <ire.go.pla@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/17 16:42:55 by jfortin           #+#    #+#             */
-/*   Updated: 2021/04/23 19:10:18 by igomez-p         ###   ########.fr       */
+/*   Updated: 2021/12/08 10:58:33 by igomez-p         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,5 +133,7 @@
 # define KEY_PAD_ADD		69
 # define KEY_PAD_ENTER		76
 # define KEY_PAD_DOT		65
+# define M_SCR_U			4
+# define M_SCR_D			5
 
 #endif
